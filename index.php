@@ -29,8 +29,8 @@ if( !empty($_POST['confirm']) ) {
 	
 	//headerの定義
 	$header = "MIME-Version: 1.0\n";
-	$header .= "From: Hayato Midorikawa <black.has.it.all@gmail.com>\n";
-	$header .= "Reply-To: Hayato Midorikawa<black.has.it.all@gmail.com>\n";
+	$header .= "From: Hayato Midorikawa <@gmail.com>\n";
+	$header .= "Reply-To: Hayato Midorikawa<@gmail.com>\n";
 
 	// 件名を設定
 	$auto_reply_subject = 'お問い合わせありがとうございます。';
@@ -58,7 +58,7 @@ if( !empty($_POST['confirm']) ) {
 	$admin_reply_text .= "メールアドレス：" . $_POST['contact'] . "\n\n";
 
 	// 運営側へメール送信
-	mb_send_mail( 'black.has.it.all@gmail.com', $admin_reply_subject, $admin_reply_text, $header);
+	mb_send_mail( '@gmail.com', $admin_reply_subject, $admin_reply_text, $header);
 	
 	// ---------自動メール機能---------//
 }
@@ -87,6 +87,25 @@ if( !empty($_POST['confirm']) ) {
       </div>
       
       <div class="contents_container">
+      <h3>性別</h3>
+            <?php 
+            if( $_POST['gender'] === "1" ){ echo '男性'; }
+		        else{ echo '女性'; } 
+		        ?>
+      </div>
+      
+      <div class="contents_container">
+      <h3>年齢</h3>
+            <?php 
+            if( $_POST['age'] === "1" ){ echo '〜19才'; }
+		        elseif( $_POST['age'] === "2" ){ echo '20才〜29才'; }
+		        elseif( $_POST['age'] === "3" ){ echo '30才〜39才'; }
+		        elseif( $_POST['age'] === "4" ){ echo '40才〜49才'; }
+		        elseif( $_POST['age'] === "5" ){ echo '50才〜'; }
+		        ?>
+      </div>
+      
+      <div class="contents_container">
       <h3>E-mail</h3>
       <?php echo $_POST['email']?>
       </div>
@@ -101,9 +120,10 @@ if( !empty($_POST['confirm']) ) {
       <input type="submit" name="btn_back" value="戻る">
 	    <input type="submit" name="submit" value="送信">
 	    <input type="hidden" name="name" value="<?php echo $_POST['name']; ?>">
+	    <input type="hidden" name="gender" value="<?php echo $_POST['gender']; ?>">
+    	<input type="hidden" name="age" value="<?php echo $_POST['age']; ?>">
 	    <input type="hidden" name="email" value="<?php echo $_POST['email']; ?>">
 	    <input type="hidden" name="content" value="<?php echo $_POST['content']; ?>">
-      
       </div>
   </form>
   
@@ -123,29 +143,54 @@ if( !empty($_POST['confirm']) ) {
   <?php else: ?>
   
   <!--contactフォーム-->
-  <form action="" method="post">
+  <form action="" method="post" name="contact">
       <div class="form_wrapper">
       <div class="contents_container">
       <h3>お名前</h3>
-      <input type="text" name="name" value="" maxlength="30" required/>
+      <input type="text" name="name" value="<?php if( !empty($_POST['name']) ){ echo $_POST['name']; } ?>" maxlength="30" required/>
       </div>
       
       <div class="contents_container">
+      <h3>性別</h3>
+      <div class="radio_box">
+        <label for="gender1">男性</label>
+          <input type="radio" name="gender" id="gender1" value="1" <?php if( !empty($_POST['gender']) && $_POST['gender'] === "1" ){ echo 'checked'; } ?> maxlength="30" required/>
+        <label for="gender2">女性</label>
+        <input type="radio" name="gender" id="gender2" value="2" <?php if( !empty($_POST['gender']) && $_POST['gender'] === "2" ){ echo 'checked'; } ?> maxlength="30" required/>
+      </div>
+      </div>
+      
+      <div class="contents_container">
+        <h3>年齢</h3>
+        <select name="age" id="age" required>
+          <option value="">選択してください</option>
+          <option value="1" <?php if( !empty($_POST['age']) && $_POST['age'] === "1" ){ echo 'selected'; } ?>>~19才</option>
+          <option value="2" <?php if( !empty($_POST['age']) && $_POST['age'] === "2" ){ echo 'selected'; } ?>>20~29才</option>
+          <option value="3" <?php if( !empty($_POST['age']) && $_POST['age'] === "3" ){ echo 'selected'; } ?>>30~39才</option>
+          <option value="4" <?php if( !empty($_POST['age']) && $_POST['age'] === "4" ){ echo 'selected'; } ?>>40~49才</option>
+          <option value="5" <?php if( !empty($_POST['age']) && $_POST['age'] === "5" ){ echo 'selected'; } ?>>50才~</option>
+        </select>
+      </div>
+      
+      
+      <div class="contents_container">
       <h3>E-mail</h3>
-      <input type="text" name="email" value="" maxlength="100" required/>
+      <input type="text" name="email" value="<?php if( !empty($_POST['email']) ){ echo $_POST['email']; } ?>" maxlength="100" required/>
       </div>
       
       <div class="contents_container">
       <h3>問い合わせ内容</h3>
-      <textarea name="content"value="" rows="8" cols="40" maxlength="999" required></textarea>
+      <textarea name="content"value="" rows="8" cols="40" maxlength="999" required><?php if( !empty($_POST['content']) ){ echo $_POST['content']; } ?></textarea>
       </div>
       </div>
       
       <div class="submit_container">
-      <input type="submit" name="confirm" value="確認">
+      <input type="submit" name="confirm" id="submit" value="確認">
       </div>
   </form>
   <?php endif; ?>
   <!--end flag3-->
+  
+  
 </body>
 </html>
