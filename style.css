@@ -1,0 +1,163 @@
+/*reset*/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, dialog, figure, footer, header,
+hgroup, menu, nav, section,
+time, mark, audio, video {
+	margin:0;
+	padding:0;
+	border:0;
+	outline:0;
+	font-size:100%;
+	vertical-align:baseline;
+	background:transparent;
+}
+body {
+	line-height:1;
+}
+
+article, aside, dialog, figure, footer, header,
+hgroup, nav, section {
+	display:block;
+}
+
+ul {
+	list-style:none;
+}
+
+blockquote, q {
+	quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content:'';
+	content:none;
+}
+
+a {
+	margin:0;
+	padding:0;
+	border:0;
+	font-size:100%;
+	vertical-align:baseline;
+	background:transparent;
+}
+
+ins {
+	background-color:#ff9;
+	color:#000;
+	text-decoration:none;
+}
+
+mark {
+	background-color:#ff9;
+	color:#000;
+	font-style:italic;
+	font-weight:bold;
+}
+
+del {
+	text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+	border-bottom:1px dotted #000;
+	cursor:help;
+}
+
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+
+hr {
+    display:block;
+    height:1px;
+    border:0;
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+	vertical-align:middle;
+}
+/*-------------------------*/
+
+
+
+h1{
+    
+    width:100%;
+    margin: 0 0 40px;
+    padding:30px 0;
+    text-align:center;
+    color:#fff;
+    font-size:24px;
+    font-weight:bold;
+    background-color:#a0fbe2;
+}
+.form_wrapper{
+    width:70%;
+    margin:0 auto;
+}
+.contents_container{
+    margin:20px 0;
+}
+
+.form_wrapper input,
+.form_wrapper textarea{
+    width:100%;
+    border:1px solid #ccc;
+    border-radius:5px;
+    font-size:16px;
+    font-family: Lato, 'Hiragino Kaku Gothic Pro', sans-serif;
+    line-height:180%;
+}
+.form_wrapper h3{
+    font-size:16px;
+    margin:0 0 6px;
+}
+input[type="submit"]{
+    width:30%;
+    padding:1%;
+}
+.submit_container{
+	margin:30px 0 ;
+	text-align: center;
+	font-family: Lato, 'Hiragino Kaku Gothic Pro', sans-serif;
+	font-weight: bold;
+}
+.submit_container input,
+.submit_container a.btn{
+	font-family: inherit;
+	background-color: #ddd;
+    border:1px solid rgba(255,255,255,1);
+	border-radius:5px;	
+	color:#333;
+}
+
+.thanks_cmt{
+	text-align: center;
+		font-family: Lato, 'Hiragino Kaku Gothic Pro', sans-serif;
+}
+a.btn{
+	display:block;
+	width:30%;
+	margin:200px auto;
+	background-color: #a0fbe2;
+	border-radius:5px;
+	color:#fff;
+	text-decoration: none;
+	text-align: center;
+	line-height:200%;
+}
